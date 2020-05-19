@@ -17,11 +17,14 @@ export default class EmployeeTable1 extends React.Component {
     }
     // console.log("props data", this.props.employeesData)
   }
-
   componentDidMount() {
-    this.setState({
-      data: this.props.employeesData
+    fetch(BASE_URL).then((data) => data.json())
+    .then((data) => {
+        this.setState({
+            data: data
+        })
     })
+    //this.getEmployeeTable()
   }
 
   addEmployeeRecord = (newData) => {
