@@ -1,5 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+
+const BASE_URL = 'https://quarkusapi.herokuapp.com/api/v1/employees';
  
 export default class EmployeeTable1 extends React.Component {
 
@@ -25,7 +27,7 @@ export default class EmployeeTable1 extends React.Component {
   addEmployeeRecord = (newData) => {
     console.log("row add triggered with ", newData);
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:8080/api/v1/employees",
+      fetch(BASE_URL,
         {
           method: 'POST',
           headers: {
@@ -47,7 +49,7 @@ export default class EmployeeTable1 extends React.Component {
   updateEmployeeRecord = (id, newData) => {
     console.log("row update triggered with ", newData);
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:8080/api/v1/employees/"+id,
+      fetch(BASE_URL+'/'+id,
         {
           method: 'PUT',
           headers: {
@@ -69,7 +71,7 @@ export default class EmployeeTable1 extends React.Component {
   deleteEmployeeRecord = (id) => {
     console.log("row delete triggered with id", id);
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:8080/api/v1/employees/"+id,
+      fetch(BASE_URL+'/'+id,
         {
           method: 'DELETE',
         }

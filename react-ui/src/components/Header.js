@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
     return (
         <nav>
-            <h2>Prolifics</h2>
+            <h2>Prolifics Quarkus POC</h2>
         </nav>
     )
 }

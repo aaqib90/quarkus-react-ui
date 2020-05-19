@@ -3,6 +3,8 @@ import Header from './Header'
 import EmployeeTable from './EmployeeTable'
 import EmployeeTable1 from './EmployeeTable1';
 
+const BASE_URL = 'https://quarkusapi.herokuapp.com/api/v1/employees';
+
 class Employee extends React.Component {
     constructor() {
         super()
@@ -17,7 +19,7 @@ class Employee extends React.Component {
     }
     
     componentDidMount() {
-        fetch('http://localhost:8080/api/v1/employees').then((data) => data.json())
+        fetch(BASE_URL).then((data) => data.json())
         .then((data) => {
             this.setState({
                 employeesData: data
