@@ -21,7 +21,7 @@ export default class EmployeeTable1 extends React.Component {
     fetch(BASE_URL).then((data) => data.json())
     .then((data) => {
         this.setState({
-            data: data
+            data: data.data
         })
     })
     //this.getEmployeeTable()
