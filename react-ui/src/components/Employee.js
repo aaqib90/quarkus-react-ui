@@ -1,6 +1,4 @@
-import React from 'react'
-import Header from './Header'
-import EmployeeTable from './EmployeeTable'
+import React from 'react';
 import EmployeeTable1 from './EmployeeTable1';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import logo from '../assets/logo.png';
+import EmployeeTable2 from './EmployeeTable2';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,11 +54,11 @@ function Employee()  {
         return (
             <>
                 <div className="wrapper">
-                    <div class="header"><img src={logo} /></div>
-                    <div class="bodyContainer">
-                        <div class="container">
-                        <h1>Welcome To Quarkus UI</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    <div className="header"><img alt="logo" src={logo} /></div>
+                    <div className="bodyContainer">
+                        <div className="container">
+                        <h1>Quarkus POC</h1>
+                        <p>This poc is developed on Quarkus Micro-services and ReactJS UI. There are two microservices of Employee record, one is integrated with MongoDB and another one is integrated with MySQL. This application is deployed in Heroku with automatic CI/CD pipelines.</p>
                         
                         <div className={classes.root}>
                             <AppBar position="static">
@@ -72,10 +71,10 @@ function Employee()  {
                                 <EmployeeTable1 />
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-                                TBD
+                                <EmployeeTable2 />
                             </TabPanel>
                         </div>
-                        <div class="footer">© Copyright 2020. Prolifics</div>
+                        <div className="footer">© Copyright 2020. Prolifics</div>
                         </div>
                     </div>
                     
