@@ -1,7 +1,14 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import { CircularProgress } from '@material-ui/core';
 
 const BASE_URL = 'https://quarkusapi.herokuapp.com/api/v1/employees';
+
+const spinnerStyle = {
+  display: 'flex',
+  'align-items': 'center',
+  'justify-content': 'center',
+}
  
 export default class EmployeeTable1 extends React.Component {
 
@@ -17,6 +24,15 @@ export default class EmployeeTable1 extends React.Component {
     }
     // console.log("props data", this.props.employeesData)
   }
+
+  loadSpinner = () => {
+    return (
+      <div style={spinnerStyle}>
+        <CircularProgress />
+      </div>
+    );
+  }
+
   componentDidMount() {
     fetch(BASE_URL).then((data) => data.json())
     .then((data) => {
@@ -91,6 +107,7 @@ export default class EmployeeTable1 extends React.Component {
 
   render() {
   return (
+    (this.state.data.length>=1) ?
     <MaterialTable
       title="Employee List"
       columns={this.state.columns}
@@ -151,7 +168,7 @@ export default class EmployeeTable1 extends React.Component {
             }, 600);
           }),
       }}
-    />
+    /> : this.loadSpinner()
   );
   }
 }

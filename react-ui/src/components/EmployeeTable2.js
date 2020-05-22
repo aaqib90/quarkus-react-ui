@@ -2,8 +2,14 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 import { MYSQL_EMPLOYEE_BASE_URL } from '../config/config';
+import { CircularProgress } from '@material-ui/core';
 
- 
+const spinnerStyle = {
+  display: 'flex',
+  'align-items': 'center',
+  'justify-content': 'center',
+}
+
 export default class EmployeeTable2 extends React.Component {
 
   constructor(props) {
@@ -18,12 +24,25 @@ export default class EmployeeTable2 extends React.Component {
     }
     // console.log("props data", this.props.employeesData)
   }
+
+
+
+  loadSpinner = () => {
+    return (
+      <div style={spinnerStyle}>
+        <CircularProgress />
+      </div>
+    );
+  }
+
   componentDidMount() {
     fetch(MYSQL_EMPLOYEE_BASE_URL).then((data) => data.json())
     .then((data) => {
         this.setState({
             data: data.data
         })
+    }).catch((err) => {
+      alert("Error!, while retrieving record");
     })
     //this.getEmployeeTable()
   }
@@ -92,6 +111,7 @@ export default class EmployeeTable2 extends React.Component {
 
   render() {
     return (
+      (this.state.data && this.state.data.length>=1) ?
         <MaterialTable
         title="Employee List"
         columns={this.state.columns}
@@ -152,7 +172,7 @@ export default class EmployeeTable2 extends React.Component {
                 }, 600);
             }),
         }}
-        />
+        /> : this.loadSpinner()
     );
   }
 }
